@@ -1,9 +1,9 @@
 import React from 'react'
 
-const SingleMeme = () => {
+const meme = () => {
   return (
-    <div>SingleMemePage</div>
+    <div>meme</div>
   )
 }
 
-export default SingleMeme
+export default meme
