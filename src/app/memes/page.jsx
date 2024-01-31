@@ -9,7 +9,7 @@ const MemeGalleryPage = () => {
   const [after, setAfter] = useState('');
 
   const fetchData = async () => {
-    const response = await fetch(`https://www.reddit.com/r/memes.json?limit=1000${after ? `&after=${after}` : ''}`);
+    const response = await fetch(`https://www.reddit.com/r/memes.json?limit=1000${after ? `&after=${after}` : ''}`,{next:{revalidate:300}});
     const data = await response.json();
     const filteredMemes = data.data.children
       .map(child => child.data)
@@ -38,13 +38,18 @@ const MemeGalleryPage = () => {
 
   return (
     <div className={styles.memeGallery}>
-      {memes.map(meme => (
-        <Link key={meme.id} href={`/memes/${meme.id}`} passHref className={styles.memeItem}>
-          
+      {memes.map(meme => {
+        let w = meme.preview.images[0].source.width;
+        let h = meme.preview.images[0].source.height;
+        let href = w + '^' + h;
+        let splitUrl = meme.preview.images[0].source.url.split('/');
+        href = href + '^' + splitUrl[splitUrl.length - 1];
+        return (
+          <Link key={meme.id} href={`/memes/${href}`} passHref className={styles.memeItem}>
             <Image src={meme.url} alt={meme.title} width={meme.preview.images[0].source.width} height={meme.preview.images[0].source.height} />
-          
-        </Link>
-      ))}
+          </Link>
+        );
+      })}
     </div>
   );
 };
