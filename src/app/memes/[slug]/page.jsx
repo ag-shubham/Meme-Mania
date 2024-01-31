@@ -2,9 +2,8 @@ import React from 'react'
 import Image from 'next/image';
 import scripts from './singleMeme.module.css';
 
-const meme = ({params, query}) => {
-  console.log(params);
-  console.log(query);
+const meme = ({params}) => {
+  
   const {slug} = params;
   console.log(slug);
   let splitSlug = slug.split('%5E');
@@ -16,7 +15,6 @@ const meme = ({params, query}) => {
   return (
     <div className={scripts.container}>
       <Image src={url} alt="meme" width={w} height={h} />
-      fdbgnhf
     </div>
   )
 }
