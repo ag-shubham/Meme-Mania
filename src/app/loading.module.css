@@ -1,0 +1,15 @@
+.loadingContainer{
+    margin: auto auto;
+    padding: 10vh 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 100px rgba(147, 138, 193, 0.2);
+    font-size: 2.2rem;
+    font-weight: bolder;
+    height: 12vh;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    font-size: large;
+    background-color: var(--bgSoft);
+}

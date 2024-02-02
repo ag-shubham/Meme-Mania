@@ -1,8 +1,9 @@
 import React from 'react'
+import styles from './loading.module.css'
 
 const loading = () => {
   return (
-    <div>loading</div>
+    <div className={styles.loadingContainer}>↻ Loading...</div>
   )
 }
 
